@@ -1,0 +1,124 @@
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('/assets/fonts/BricolageGrotesque.woff2') format('woff2');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'General Sans';
+  src: url('/assets/fonts/GeneralSans.woff2') format('woff2');
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark navy professional theme */
+    --background: 0.13 0.024 255;
+    --foreground: 0.93 0.008 255;
+    --card: 0.17 0.028 255;
+    --card-foreground: 0.93 0.008 255;
+    --popover: 0.17 0.028 255;
+    --popover-foreground: 0.93 0.008 255;
+    --primary: 0.65 0.18 195;
+    --primary-foreground: 0.09 0.025 195;
+    --secondary: 0.22 0.03 255;
+    --secondary-foreground: 0.82 0.01 255;
+    --muted: 0.21 0.026 255;
+    --muted-foreground: 0.58 0.022 255;
+    --accent: 0.7 0.14 58;
+    --accent-foreground: 0.13 0.024 255;
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.98 0.005 0;
+    --success: 0.62 0.18 145;
+    --success-foreground: 0.09 0.025 145;
+    --warning: 0.72 0.16 65;
+    --warning-foreground: 0.1 0.03 65;
+    --border: 0.27 0.03 255;
+    --input: 0.27 0.03 255;
+    --ring: 0.65 0.18 195;
+    --radius: 0.5rem;
+    --chart-1: 0.65 0.18 195;
+    --chart-2: 0.62 0.18 145;
+    --chart-3: 0.7 0.14 58;
+    --chart-4: 0.55 0.22 25;
+    --chart-5: 0.6 0.16 280;
+    --sidebar: 0.15 0.026 255;
+    --sidebar-foreground: 0.93 0.008 255;
+    --sidebar-primary: 0.65 0.18 195;
+    --sidebar-primary-foreground: 0.09 0.025 195;
+    --sidebar-accent: 0.22 0.03 255;
+    --sidebar-accent-foreground: 0.93 0.008 255;
+    --sidebar-border: 0.27 0.03 255;
+    --sidebar-ring: 0.65 0.18 195;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    font-feature-settings: 'ss01', 'ss02', 'cv01', 'cv09';
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: oklch(var(--muted));
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(var(--border));
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(var(--muted-foreground));
+}
+
+/* Status badges */
+.badge-success {
+  @apply bg-success/20 text-success border border-success/30;
+}
+.badge-destructive {
+  @apply bg-destructive/20 text-destructive border border-destructive/30;
+}
+.badge-muted {
+  @apply bg-muted text-muted-foreground border border-border;
+}
+
+/* Glass card effect */
+.glass-card {
+  background: oklch(var(--card) / 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid oklch(var(--border) / 0.6);
+}
+
+/* Glow effect for primary buttons */
+.btn-glow:hover {
+  box-shadow: 0 0 20px oklch(var(--primary) / 0.35);
+}
+
+/* Subtle grid background */
+.grid-bg {
+  background-image:
+    linear-gradient(oklch(var(--border) / 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(var(--border) / 0.15) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
